@@ -1,0 +1,60 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+
+$title-row-height: 50px;
+$control-row-height: 60px;
+
+.control-row{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: $control-row-height;
+  background: #305165eb;
+}
+
+.title-row{
+  background: #405f71de;
+  color: white;
+  height: $title-row-height;
+}
+
+.item-property{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .btn{
+    font-size: 11px;
+    margin: 5px 0;
+  }
+}
+
+.item-wrap{
+  overflow-y: auto;
+  height: calc(100% - #{$control-row-height});
+
+  .label{
+    color: #a4a4a4;
+    margin-right: 5px;
+  }
+
+  .row-dark{
+    background: #5974836e;
+    color: white;
+
+    .label{
+      color: #1e323e;
+    }
+  }
+
+
+}
+
+
+@include media-breakpoint-up(lg){
+  .item-wrap{
+    height: calc(100% - #{$title-row-height} - #{$control-row-height});
+  }
+}

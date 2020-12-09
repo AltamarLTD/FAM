@@ -1,0 +1,63 @@
+<div class="container-fluid h-100">
+  <div class="row title-row d-none d-lg-flex text-center">
+    <div class="col-12 col-lg-1 item-property">
+      Ім'я
+    </div>
+    <div class="col-12 col-lg-2 item-property">
+      Прізвище
+    </div>
+    <div class="col-12 col-lg-1 item-property">
+      Компанія
+    </div>
+    <div class="col-12 col-lg-2 item-property">
+      e-mail
+    </div>
+    <div class="col-12 col-lg-2 item-property">
+      Телефон
+    </div>
+    <div class="col-12 col-lg-1 item-property">
+      Місто
+    </div>
+    <div class="col-12 col-lg-1 item-property">
+      Регіон
+    </div>
+    <div class="col-12 col-lg-1 item-property">
+      Країна
+    </div>
+  </div>
+
+  <div class="item-wrap row pt-2">
+    <ul class="container-fluid">
+      <li class="row pt-1 pb-1" *ngFor="let client of clientList; index as i" [class.row-dark]="i%2 === 1">
+        <div class="col-12  col-sm-6 col-lg-1 item-property">
+          <span class="d-lg-none label">Ім'я:</span>{{client.name}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-2 item-property">
+          <span class="d-lg-none label">Прізвище:</span>{{client.surname}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-1 item-property">
+          <span class="d-lg-none label">Компанія:</span>{{client.company}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-2 item-property">
+          <span class="d-lg-none label">e-mail:</span>{{client.email}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-2 item-property">
+          <span class="d-lg-none label">Телефон:</span>{{client.phone}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-1 item-property">
+          <span class="d-lg-none label">Місто:</span>{{client.city}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-1 item-property">
+          <span class="d-lg-none label">Регіон:</span>{{client.region}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-1 item-property">
+          <span class="d-lg-none label">Країна:</span>{{client.country}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-1 item-property">
+          <button class="btn btn-primary" [routerLink]="['./../invoices']" [queryParams]="{clientId: client.id}">Історія замовлень</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>

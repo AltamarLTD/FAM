@@ -1,0 +1,32 @@
+<header *ngIf="authService.currentUserValue">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" routerLink="/" ><img src="./../scss/images/logo1.jpg" class="d-inline-block align-top logo" alt="ALTA MAR"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav w-100 d-flex justify-content-between">
+        <li class="nav-item">
+          <button class="btn btn-outline-light btn-lg common-btn"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                  routerLink="/product-list">Продукты</button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-light btn-lg common-btn"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                  routerLink="/clients">Клиенты</button>
+        </li>
+        <li class="nav-item ">
+          <button class="btn btn-outline-light btn-lg common-btn"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                  routerLink="/invoices">Закупки</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <button class="btn btn-danger btn-log-out" *ngIf="authService.currentUserValue" (click)="logout()">Log out</button>
+</header>

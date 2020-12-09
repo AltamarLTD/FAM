@@ -1,0 +1,90 @@
+<div class="container-fluid h-100">
+  <div class="row title-row d-none d-lg-flex text-center">
+    <div class="col-12 col-lg-1 item-property">
+     Номер замовлення
+    </div>
+    <div class="col-12 col-lg-2 item-property">
+      Дата
+    </div>
+    <div class="col-12 col-lg-2 item-property">
+      Сума
+    </div>
+    <div class="col-12 col-lg-3 item-property">
+      Інформація про замовлення
+    </div>
+    <div class="col-12 col-lg-2 item-property">
+      Статус
+    </div>
+  </div>
+
+  <div class="item-wrap row pt-2 text-center">
+    <ul class="container-fluid">
+      <li class="row pt-1 pb-1" *ngFor="let item of itemList; index as i" [class.row-dark]="i%2 === 1">
+        <div class="col-12  col-sm-6 col-lg-1 item-property">
+          <span class="d-lg-none label">Номер замовлення:</span>{{item.id}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-2 item-property">
+          <span class="d-lg-none label">Дата:</span>{{item.date | date: 'dd/MM/yy,HH:mm'}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-2 item-property">
+          <span class="d-lg-none label">Сума:</span>{{item.sum}} UAH
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 item-property flex-column">
+          <div class="d-lg-none label">Інформація про замовлення:</div>
+          <div *ngFor="let info of item.invoiceProductsDto" class="item-info my-2">
+            <div><span>Назва: </span>{{info.productDTO.name}}</div>
+            <div><span>Кількість: </span>{{info.quantity}}</div>
+            <div><span>Ціна за упаковку: </span>{{info.productDTO.pricePack}} UAH</div>
+
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-2 item-property">
+          <span class="d-lg-none label">Статус:</span>
+          <select class="custom-select custom-select-sm" *ngIf="statusList" [(ngModel)]="item.invoiceStatusDTO.status">
+            <option *ngFor="let status of statusList" [ngValue]="status" [selected]="status === item.invoiceStatusDTO.status">{{status}}</option>
+          </select>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-1 item-property">
+          <button class="btn btn-primary" (click)="onUpdateStatus(item)">Оновити статус</button>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-1 item-property">
+          <button class="btn btn-primary" (click)="getClientInfo(item.id)"  data-toggle="modal" data-target="#modal">Замовник</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- client info modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" (click)="onModalWrapperClick($event)">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" *ngIf="clientModalInfo">
+      <div class="modal-header justify-content-center">
+        <h5 class="modal-title" id="modalLabel">Замовлення №{{clientModalInfo.invoiceId}} на суму {{clientModalInfo.invoiceSum}} UAH</h5>
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >-->
+<!--          <span aria-hidden="true" >&times;</span>-->
+<!--        </button>-->
+      </div>
+      <div class="modal-body">
+        <div class="info-row">
+          <span>Замовник:</span> {{clientModalInfo.name}} {{clientModalInfo.surname}}
+        </div>
+        <div class="info-row">
+          <span>Компанія:</span> {{clientModalInfo.company}}
+        </div>
+        <div class="info-row">
+          <span>Місто:</span> {{clientModalInfo.city}}, {{clientModalInfo.region}}, {{clientModalInfo.country}}
+        </div>
+        <div class="info-row">
+          <span>Тел:</span> {{clientModalInfo.phone}}
+        </div>
+        <div class="info-row">
+          <span>E-mail:</span> {{clientModalInfo.email}}
+        </div>
+      </div>
+    </div>
+
+    <div class="loading"  *ngIf="!clientModalInfo">Loading...</div>
+  </div>
+</div>

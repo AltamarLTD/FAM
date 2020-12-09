@@ -1,0 +1,58 @@
+<div class="container-fluid h-100">
+  <div class="row control-row">
+    <button class="btn btn-primary" [routerLink]="['./add']">Додати товар</button>
+  </div>
+
+  <div class="row title-row d-none d-lg-flex">
+    <div class="col-12 col-lg-2 item-property">
+      Назва
+    </div>
+    <div class="col-12 col-lg-2 item-property">
+      Дата
+    </div>
+    <div class="col-12 col-lg-2 item-property">
+      Країна
+    </div>
+    <div class="col-12 col-lg-2 item-property">
+      Упаковка
+    </div>
+    <div class="col-12 col-lg-1 item-property">
+      Ціна за кг
+    </div>
+    <div class="col-12 col-lg-1 item-property">
+      Ціна за упаковку
+    </div>
+  </div>
+
+  <div class="item-wrap row pt-2">
+    <ul class="container-fluid">
+      <li class="row pt-1 pb-1" *ngFor="let product of productList; index as i" [class.row-dark]="i%2 === 1">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2 item-property">
+          <span class="d-lg-none label">Назва:</span>{{product.name}}
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2 item-property">
+          <span class="d-lg-none label">Дата:</span>{{product.date}}
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2 item-property">
+          <span class="d-lg-none label">Країна:</span>{{product.country}}
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2 item-property">
+          <span class="d-lg-none label">Упаковка:</span>{{product.pack}}
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-1 item-property">
+          <span class="d-lg-none label"> Ціна за кг:</span>{{product.priceKg}}
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-1 item-property">
+          <span class="d-lg-none label">Ціна за упаковку:</span>{{product.pricePack}}
+        </div>
+        <div class="col-12 col-sm-6 col-lg-1 item-property">
+          <button class="btn btn-primary" [routerLink]="['./edit']" [queryParams]="{productId: product.id}">Редагувати</button>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-1 item-property">
+          <button class="btn btn-danger" (click)="onItemDelete(product.id)">Видалити</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>

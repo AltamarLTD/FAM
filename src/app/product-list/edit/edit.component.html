@@ -1,0 +1,81 @@
+<div class="container pt-3" *ngIf="item">
+  <div class="row">
+    <div class="col">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Назва товару</span>
+        </div>
+        <input type="text" [(ngModel)]="item.name" class="form-control" required>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Країна</span>
+        </div>
+        <input type="text" [(ngModel)]="item.country" class="form-control" required>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Дата</span>
+        </div>
+        <input type="text" [(ngModel)]="item.date" class="form-control" required>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Опис</span>
+        </div>
+        <textarea type="text" [(ngModel)]="item.description" class="form-control" required></textarea>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Вага упаковки, кг</span>
+        </div>
+        <input type="text" [(ngModel)]="item.pack" class="form-control" required>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Ціна за кг</span>
+        </div>
+        <input type="number" [(ngModel)]="item.priceKg" class="form-control" required>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Ціна за упаковку</span>
+        </div>
+        <input type="number" [(ngModel)]="item.pricePack" class="form-control" required>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <button class="btn btn-primary" (click)="onSaveChanges()">
+      Зберегти зміни
+    </button>
+  </div>
+
+  <div class="row mb-3 mt-3">
+    <div class="col-12 d-flex justify-content-center" >
+      <img *ngIf="item.img" [src]="getImg(item.img)" class="img" alt="fish-picture"/>
+      <span *ngIf="!item.img" class="img-none-label mb-3">Зображення відсутнє</span>
+    </div>
+
+    <div class="col-12 input-group justify-content-center">
+      <div class="form-group">
+        <label for="loadFile">Додати зображення</label>
+        <input type="file" id="loadFile"  (change)="onChoseImg($event)" class="form-control img-load">
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-4">
+    <button class="btn btn-primary" (click)="onSaveImg()">
+      Зберегти зображення
+    </button>
+  </div>
+
+</div>
