@@ -6,4 +6,4 @@ RUN npm install
 COPY . /fam
 RUN npm run build --prod
 FROM nginx:1.17.1-alpine
-COPY --from=build-step /fam/dist/FAM /usr/share/nginx/html
+COPY --from=build-step /fam/dist/fish-shop-admin /usr/share/nginx/html

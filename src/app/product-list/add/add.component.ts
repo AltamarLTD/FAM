@@ -21,7 +21,6 @@ export class AddComponent implements OnInit, OnDestroy {
     country: null,
     date: null,
     description: null,
-    id: null,
     img: 'DEFAULT.jpg',
     name: null,
     pack: null,

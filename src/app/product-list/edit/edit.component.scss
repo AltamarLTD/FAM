@@ -17,3 +17,20 @@ textarea{
   height: 50px;
   padding: 10px;
 }
+
+.alert{
+  position: absolute;
+  transform: translate(-50%, -88%);
+  left: 50%;
+  width: max-content;
+  z-index: 10;
+}
+
+.error-offset{
+  margin-top: 52px;
+}
+
+.disabled{
+  opacity: 0.5;
+  pointer-events: none;
+}

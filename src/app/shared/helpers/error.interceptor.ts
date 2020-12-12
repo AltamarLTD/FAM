@@ -17,16 +17,19 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(catchError(err => {
+      console.log(err)
       if (err.status === 401) {
         // auto logout if 401 response returned from back
         this.authenticationService.logout();
         location.reload();
+      } else if (err.hasOwnProperty('error')) {
+        this.alertService.showDangerAlert({errorCode: err.error.status, errorMessage: err.error.message});
       } else {
         this.alertService.showDangerAlert({errorCode: err.status, errorMessage: err.message});
       }
 
       const error = err.error?.message || err.statusText;
       return throwError(error);
-    }))
+    }));
   }
 }

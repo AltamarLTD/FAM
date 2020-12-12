@@ -2,3 +2,20 @@ textarea{
   min-height: 100px;
   max-height: 400px;
 }
+
+.alert{
+  position: absolute;
+  transform: translate(-50%, -88%);
+  left: 50%;
+  width: max-content;
+  z-index: 10;
+}
+
+.error-offset{
+  margin-top: 52px;
+}
+
+.disabled{
+  opacity: 0.5;
+  pointer-events: none;
+}
